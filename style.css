@@ -1,0 +1,242 @@
+/* 1. Add Smooth Scrolling to the whole page */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Google Sans', 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(135deg, #90bcfe 0%, #a83878 100%);
+    background-attachment: fixed;
+}
+
+/* 2. Main container setup */
+main {
+    width: 100%; /* Changed from max-width to allow full-screen sections */
+    margin: 0;
+    padding: 0;
+}
+
+/* 3. Make every section cover the screen */
+section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertical Center */
+    align-items: center;     /* Horizontal Center */
+    padding: 40px 20px;
+    box-sizing: border-box;  /* Important so padding doesn't break the 100vh */
+}
+
+/* Update section styles for full-screen aesthetic */
+.about-me, .resume, .contact {
+    background-color: rgba(255, 255, 255, 2); /* Slight transparency looks cleaner */
+    margin: 0; /* Removed the 20px margins to prevent gaps between sections */
+    border-radius: 0; /* Remove radius for a seamless full-page transition */
+    box-shadow: none; 
+}
+
+/* Section Styles */
+.home {
+    text-align: center;
+    padding: 50px 20px;
+}
+.about-me {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.resume {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.contact {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Bar Styles */
+.hari {
+    font-family: 'Google Sans', sans-serif;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.4s ease; /* Smooth transition for color change */
+    background: transparent; /* Start transparent */
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Scrolled State (Triggered by JS) */
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95); /* Semi-solid white background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    padding: 10px 5%; /* Shrink navbar slightly when scrolling */
+}
+
+/* Text Colors - Default */
+.hari, .navbar ul li a {
+    color: #fff;
+    transition: color 0.4s ease;
+}
+
+/* Text Colors - When Scrolled */
+.navbar.scrolled .hari, 
+.navbar.scrolled ul li a {
+    color: #333; /* Dark gray text when on white background */
+    text-shadow: none;
+}
+
+/* Burger Icon Color - When Scrolled */
+.navbar.scrolled .menu-icon {
+    filter: invert(1); /* Flips white icon to black if it's an SVG */
+}
+.navbar ul {
+    list-style: none;
+    display: flex !important;
+    gap: 40px;
+    padding: 0;
+    margin: 0;
+}
+.navbar ul li {
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar ul li:hover {
+    color: #ff6347;
+    background: rgba(255, 99, 71, 0.1); /* Subtle hover background */
+    transition: all 0.3s ease-in;
+}
+}
+/* Update the menu icon styling for better alignment */
+.menu-icon {
+    display: none;
+    width: 30px; /* Adjusted size */
+    height: auto;
+    cursor: pointer;
+    z-index: 100;
+}
+
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+        position: absolute; /* Keep it fixed in the corner */
+        right: 20px;
+        top: 20px;
+        z-index: 100;
+    }
+
+    .navbar {
+        position: relative;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .navbar ul {
+        display: none !important; /* Hide by default on mobile */
+        flex-direction: column !important;
+        width: 100%;
+        margin-top: 20px;
+        gap: 0;
+    }
+
+    /* Only show the list when .active is applied via JS */
+    .navbar ul.active {
+        display: flex !important;
+    }
+
+    .navbar ul li {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+    }
+}
+
+/* Hide icon on desktop explicitly */
+@media (min-width: 769px) {
+    .menu-icon {
+        display: none !important;
+    }
+}@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+
+    .navbar {
+        flex-direction: row; /* Keep Name and Burger on the same line */
+        flex-wrap: wrap; 
+        padding: 15px 20px;
+    }
+
+    .navbar ul {
+        display: none; 
+        flex-direction: column;
+        width: 100%; /* Force menu to take full width when open */
+        margin-top: 20px;
+        gap: 5px;
+        text-align: center;
+    }
+
+    .navbar ul.active {
+        display: flex;
+    }
+
+    .navbar ul li {
+        padding: 10px;
+        width: 100%;
+    }
+    
+    .hari {
+        font-size: 1.5rem; /* Slightly smaller text for mobile */
+    }
+}
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-image: linear-gradient(135deg, #90bcfe 0%, #a83878 100%);
+    color: #fff;
+}
+
+.montserrat-<uniquifier> {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
