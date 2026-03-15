@@ -1,4 +1,4 @@
-/* 1. Add Smooth Scrolling to the whole page */
+/* 1. Global Optimization */
 html {
     scroll-behavior: smooth;
 }
@@ -7,236 +7,265 @@ body {
     font-family: 'Google Sans', 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(135deg, #90bcfe 0%, #a83878 100%);
-    background-attachment: fixed;
+    /* Using a fixed background can be heavy; background-attachment: fixed is a common lag culprit */
+    background: linear-gradient(135deg, #90bcfe 0%, #a83878 100%) fixed;
 }
 
-/* 2. Main container setup */
+/* 2. Layout */
 main {
-    width: 100%; /* Changed from max-width to allow full-screen sections */
-    margin: 0;
-    padding: 0;
+    width: 100%;
 }
 
-/* 3. Make every section cover the screen */
 section {
     min-height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertical Center */
-    align-items: center;     /* Horizontal Center */
-    padding: 40px 20px;
-    box-sizing: border-box;  /* Important so padding doesn't break the 100vh */
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px; /* Top padding ensures fixed nav doesn't hide titles */
+    box-sizing: border-box;
+    scroll-margin-top: 70px;
+}
+.bigHeading {
+    font-size: 6rem;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-/* Update section styles for full-screen aesthetic */
+/* 3. Section Styling - Optimized Glassmorphism */
 .about-me, .resume, .contact {
-    background-color: rgba(255, 255, 255, 2); /* Slight transparency looks cleaner */
-    margin: 0; /* Removed the 20px margins to prevent gaps between sections */
-    border-radius: 0; /* Remove radius for a seamless full-page transition */
-    box-shadow: none; 
+    background: rgba(255, 255, 255, 0.85); /* Increased opacity to reduce blur workload */
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 80vw;
+    max-height: 40vh;
+    margin: 80px auto;
+    padding: 40px;
 }
 
-/* Section Styles */
-.home {
-    text-align: center;
-    padding: 50px 20px;
-}
-.about-me {
-    background-color: #fff;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.resume {
-    background-color: #fff;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.contact {
-    background-color: #fff;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Navigation Bar Styles */
-.hari {
-    font-family: 'Google Sans', sans-serif;
-    color: rgb(255, 255, 255);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
+/* 4. Navbar - Performance Fix */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    transition: all 0.4s ease; /* Smooth transition for color change */
-    background: transparent; /* Start transparent */
-    padding: 20px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 2%;
     box-sizing: border-box;
-
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: background 0.3s ease, padding 0.3s ease;
+    /* Helps browser optimize the layer for scrolling */
+    will-change: background, padding; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+.hari {
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex; /* Keeps letters together in a row */
+    gap: 2px;
+    color: antiquewhite;
 }
 
-/* Scrolled State (Triggered by JS) */
-.navbar.scrolled {
-    background: rgba(255, 255, 255, 0.95); /* Semi-solid white background */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    padding: 10px 5%; /* Shrink navbar slightly when scrolling */
-}
-
-/* Text Colors - Default */
-.hari, .navbar ul li a {
+.hari span {
+    display: inline-block;
     color: #fff;
-    transition: color 0.4s ease;
+    /* This calculates a 0.1s delay for every letter index */
+    animation: wavy-text 2s ease-out infinite;
+    animation-delay: calc(0.1s * var(--i));
+}
+.navbar.scrolled .hari span {
+    color: #333;
+}
+@keyframes wavy-text {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px); /* How high the wave goes */
+        color: #ffffff; /* Optional: change color at the peak of the wave! */
+    }
+}
+/* Glass effect only used here to save resources */
+.navbar {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Text Colors - When Scrolled */
-.navbar.scrolled .hari, 
-.navbar.scrolled ul li a {
-    color: #333; /* Dark gray text when on white background */
-    text-shadow: none;
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0px 5%;
+    backdrop-filter: none; /* Disabling blur on solid background saves GPU */
+    -webkit-backdrop-filter: none;
 }
 
-/* Burger Icon Color - When Scrolled */
-.navbar.scrolled .menu-icon {
-    filter: invert(1); /* Flips white icon to black if it's an SVG */
-}
+/* 5. Navigation Items */
 .navbar ul {
     list-style: none;
-    display: flex !important;
-    gap: 40px;
-    padding: 0;
+    display: flex;
+    gap: 30px;
     margin: 0;
-}
-.navbar ul li {
-    cursor: pointer;
-    transition: all 0.5s ease-out;
-    padding: 10px 20px;
-    border-radius: 10px;
+    padding: 0;
 }
 
 .navbar a {
     color: #fff;
     text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-.navbar ul li:hover {
-    color: #ff6347;
-    background: rgba(255, 99, 71, 0.1); /* Subtle hover background */
-    transition: all 0.3s ease-in;
+.navbar.scrolled .hari, 
+.navbar.scrolled ul li a {
+    color: #333;
 }
+
+.navbar.scrolled .menu-icon {
+    filter: invert(1);
 }
-/* Update the menu icon styling for better alignment */
+
+/* 6. Responsive Menu - Cleaned up redundant queries */
 .menu-icon {
     display: none;
-    width: 30px; /* Adjusted size */
-    height: auto;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
-    z-index: 100;
 }
+.home {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 0 10%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    
+    /* 1. Add float to the entire section */
+    animation: main-float 6s ease-in-out infinite;
+    will-change: transform;
+}
+@keyframes main-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+.home-content, .pfp-container {
+    /* Existing float animations... */
+    transition: opacity 0.1s linear; /* Short duration for real-time feel */
+    will-change: opacity; /* Optimizes for performance */
+}
+.home-content {
+    flex: 1; /* Takes up available space */
+    max-width: 600px;
+}
+
+.pfp-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Pushes the image to the far right */
+}
+
+.pfp {
+    width: 500px; /* Increased size since it has its own side now */
+    height: 500px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 8px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    animation: float 4s ease-in-out infinite;
+}
+.btn {
+    font-family: 'Google Sans', 'Montserrat', sans-serif;
+    font-size: 1rem;
+    margin: 2rem 0; /* Changed to 2rem 0 to prevent pushing it left/right */
+    padding: 15px 35px;
+    background: linear-gradient(135deg, #7a37a6 0%, #b83881 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(122, 55, 166, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 25px rgba(122, 55, 166, 0.4);
+    filter: brightness(1.1);
+}
+
+
 
 @media (max-width: 768px) {
     .menu-icon {
         display: block;
-        position: absolute; /* Keep it fixed in the corner */
-        right: 20px;
-        top: 20px;
-        z-index: 100;
+        transition: transform 0.4s ease;
     }
 
-    .navbar {
-        position: relative;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 20px;
+    .menu-icon.is-open {
+    transform: rotate(90deg); /* Spins the burger 90 degrees */
     }
 
     .navbar ul {
-        display: none !important; /* Hide by default on mobile */
-        flex-direction: column !important;
+        display: none; /* Controlled by 'active' class */
+        position: absolute;
+        top: 100%;
+        left: 0;
         width: 100%;
-        margin-top: 20px;
-        gap: 0;
-    }
-
-    /* Only show the list when .active is applied via JS */
-    .navbar ul.active {
-        display: flex !important;
-    }
-
-    .navbar ul li {
-        width: 100%;
-        text-align: center;
-        padding: 15px 0;
-    }
-}
-
-/* Hide icon on desktop explicitly */
-@media (min-width: 769px) {
-    .menu-icon {
-        display: none !important;
-    }
-}@media (max-width: 768px) {
-    .menu-icon {
-        display: block;
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
-    }
-
-    .navbar {
-        flex-direction: row; /* Keep Name and Burger on the same line */
-        flex-wrap: wrap; 
-        padding: 15px 20px;
-    }
-
-    .navbar ul {
-        display: none; 
         flex-direction: column;
-        width: 100%; /* Force menu to take full width when open */
-        margin-top: 20px;
-        gap: 5px;
-        text-align: center;
+        background: rgba(255, 255, 255, 0.98);
+        padding: 20px 0;
+        gap: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .navbar ul.active {
         display: flex;
     }
 
-    .navbar ul li {
+    .navbar ul li a {
+        color: #333; /* Dark text for mobile menu readability */
+        display: block;
         padding: 10px;
-        width: 100%;
+        text-align: center;
     }
-    
     .hari {
-        font-size: 1.5rem; /* Slightly smaller text for mobile */
+        font-size: 1.5rem;
+    }
+    .home {
+        flex-direction: column-reverse; /* Put text below image on mobile */
+        justify-content: center;
+        text-align: center;
+        padding-top: 100px; /* Space for the fixed navbar */
+    }
+    .bigHeading {
+        font-size: 3rem; /* Smaller heading on mobile */
+    }
+    .pfp-container {
+        padding-top: 10px;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .pfp {
+        width: 200px;
+        height: 200px;
     }
 }
-/* Footer Styles */
+
 footer {
     text-align: center;
     padding: 20px;
-    background-image: linear-gradient(135deg, #90bcfe 0%, #a83878 100%);
-    color: #fff;
-}
-
-.montserrat-<uniquifier> {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
+   /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.21);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9.6px);
+    -webkit-backdrop-filter: blur(9.6px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }

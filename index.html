@@ -17,7 +17,22 @@
 <body>
     <div class="container">   
     <nav class="navbar">
-        <h1 class="hari">Jhon Hervy Yu.</h1>
+        <h1 class="hari">
+    <span style="--i:1">J</span>
+    <span style="--i:2">h</span>
+    <span style="--i:3">o</span>
+    <span style="--i:4">n</span>
+    <span style="--i:5">&nbsp;</span>
+    <span style="--i:6">H</span>
+    <span style="--i:7">e</span>
+    <span style="--i:8">r</span>
+    <span style="--i:9">v</span>
+    <span style="--i:10">y</span>
+    <span style="--i:11">&nbsp;</span>
+    <span style="--i:12">Y</span>
+    <span style="--i:13">u</span>
+    </h1>
+   
     <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About Me</a></li>
@@ -32,9 +47,16 @@
 
     <main>
        <section id="home" class="home">
-        <h2>Welcome to My Portfolio</h2>
+    <div class="home-content">
+        <h1 class="bigHeading">Welcome to My Portfolio</h1>
         <p>Hi, I'm Jhon Hervy Yu, a passionate web developer.</p>
-    </section>
+        <button class="btn" onclick="window.location.href='#about'">About me!</button>
+    </div>
+
+    <div class="pfp-container">
+        <img src="src/images/yu.png" alt="Jhon Hervy Yu" class="pfp">
+    </div>
+</section>
 
     <section id="about" class="about-me">
         <h2>About Me</h2>
@@ -57,6 +79,9 @@
    </div>
 
    <script>
+/*
+    This script handles the functionality of the hamburger menu for mobile devices. When the menu icon is clicked, it toggles the visibility of the navigation links. Additionally, when a navigation link is clicked, it ensures that the menu closes, providing a smooth user experience on mobile devices.
+*/
     const menuIcon = document.querySelector('.menu-icon');
     const navList = document.querySelector('.navbar ul');
 
@@ -64,7 +89,6 @@
         navList.classList.toggle('active');
     });
 
-    // Optional: Close menu when a link is clicked
     document.querySelectorAll('.navbar ul li').forEach(link => {
         link.addEventListener('click', () => {
             navList.classList.remove('active');
@@ -77,6 +101,40 @@
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
+    }
+});
+
+    menuIcon.addEventListener('click', () => {
+        navList.classList.toggle('active');
+        menuIcon.classList.toggle('is-open'); // Add this line
+});
+
+/*
+    This script listens for scroll events and adjusts the opacity of the home content and profile picture based on how far down the user has scrolled. The content will fade out as the user scrolls down, creating a smooth transition effect.
+*/
+window.addEventListener('scroll', () => {
+    // Select both the text and the PFP container
+    const homeContent = document.querySelector('.home-content');
+    const pfpContainer = document.querySelector('.pfp-container');
+    
+    // Calculate the scroll position
+    let scrollPos = window.scrollY;
+    let windowHeight = window.innerHeight;
+
+    // Calculate opacity (1 at top, 0 when scrolled one full screen)
+    // Adjust the '1.2' to make it fade faster or slower
+    let opacityValue = 1 - (scrollPos / (windowHeight / 1.8));
+
+    // Apply the opacity, ensuring it doesn't go below 0
+    if (opacityValue >= 0) {
+        homeContent.style.opacity = opacityValue;
+        pfpContainer.style.opacity = opacityValue;
+        
+        // Optional: slight scale down as it fades for a "sinking" effect
+        homeContent.style.transform = `scale(${0.95 + (opacityValue * 0.05)})`;
+    } else {
+        homeContent.style.opacity = 0;
+        pfpContainer.style.opacity = 0;
     }
 });
 </script>
