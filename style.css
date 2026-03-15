@@ -149,7 +149,59 @@ section {
     /* 1. Add float to the entire section */
     animation: main-float 6s ease-in-out infinite;
     will-change: transform;
+
+    position: relative;
+    overflow: hidden; /* Keeps waves inside the section */
+    /* Integrated your existing palette: Blue, Magenta, and Cyan */
+    background: linear-gradient(315deg, 
+        #a83878 3%, 
+        #7194c7 38%, 
+        #3aa19b 68%, 
+        #a83878 98%);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+    z-index: 1;
 }
+@keyframes gradient-shift {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+.wave {
+    background: rgb(255 255 255 / 15%); /* Subtle white glass look */
+    border-radius: 1000% 1000% 0 0;
+    position: absolute; /* Absolute instead of Fixed to stay in Home */
+    width: 200%;
+    height: 12em;
+    animation: wave-move 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.5;
+    bottom: 0;
+    left: 0;
+    z-index: -1; /* Sits behind text and PFP */
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave-move 18s linear reverse infinite;
+    opacity: 0.3;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave-move 20s -1s reverse infinite;
+    opacity: 0.2;
+}
+
+@keyframes wave-move {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-25%); }
+    50% { transform: translateX(-50%); }
+    75% { transform: translateX(-25%); }
+    100% { transform: translateX(0); }
+}
+
 @keyframes main-float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-15px); }
@@ -615,6 +667,8 @@ section {
 }
 
 footer {
+    color: #4e0048;
+    background: (135deg, #7a37a6 0%, #b83881 100%);
     text-align: center;
     padding: 20px;
    /* From https://css.glass */
