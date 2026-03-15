@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
      <link rel="icon" type="image/x-icon" href="src/images/favicon.ico">
 
@@ -49,7 +50,7 @@
        <section id="home" class="home">
     <div class="home-content">
         <h1 class="bigHeading">Welcome to My Portfolio</h1>
-        <p>Hi, I'm Jhon Hervy Yu, a passionate web developer.</p>
+        <p style="color: antiquewhite; font-weight: 200;" >Graphics and Design Student at Cebu Technological University</p>
         <button class="btn" onclick="window.location.href='#about'">About me!</button>
     </div>
 
@@ -59,19 +60,131 @@
 </section>
 
     <section id="about" class="about-me">
-        <h2>About Me</h2>
-        <p>I am a web developer with a strong background...</p>
+        <div class="about-container">
+        <div class="about-text">
+            <h2 class="section-title">About Me</h2>
+            <p>
+               Based in Cebu, Philippines, I bridge the gap between complex code and compelling narratives. As a <strong>Graphics and Design student</strong>, I approach web development with a filmmaker’s lens—treating every interface as a storyboard and every user journey as a cinematic experience.
+            </p> 
+            <p> My background in directing and scriptwriting allows me to bring a unique sense of pacing and visual flow to responsive web projects. Whether I’m coding with Three.js or designing for sustainable, indigenous-inspired brands, my goal is to create digital spaces that are as functional as they are resonant.</p>
+               
+        
+            <p>Currently exploring: Non-linear RPG mechanics in Godot, Kotlin (Andriod App Development) Three.js, Blender</p>
+
+          <button class="btn" onclick="window.location.href='#resume'">Credentials and Qualifications</button>
+        </div>
+    
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Design</h3>
+                <p>Photoshop, Video Editing, Storyboarding, Branding</p>
+            </div>
+            <div class="skill-card">
+                <h3>Code</h3>
+                <p>Python, JavaScript, HTML, CSS, React</p>
+            </div>
+            <div class="skill-card">
+                <h3>Interests</h3>
+                <p>Film Making, Music Production, Digital Art, Game Development, Animation, MTB</p>
+            </div>
+        </div>
+      
+    </div>
     </section>
 
     <section id="resume" class="resume">
-        <h2>Resume</h2>
-        <p>You can download my resume <a href="src/resume.pdf" target="_blank">here</a>.</p>
-    </section>
+    <div class="resume-container">
+        <h2 class="section-title">The Creative Stack</h2>
+        
+        <div class="resume-grid">
+            <div class="resume-left">
+                <div class="resume-block">
+                    <h3>Experience</h3>
+                    <div class="resume-item">
+                        <h4>Freelance Multimedia Specialist</h4>
+                        <span class="date">2022 – Present</span>
+                        <ul>
+                            <li>Translating abstract ideas into 2D animations and digital art.</li>
+                            <li>Producing original scores and sound design for creative projects.</li>
+                            <li>Balancing aesthetic "Directing" with functional web code.</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <section id="contact" class="contact">
-        <h2>Contact Me</h2>
-        <p>You can reach me at: jhon@example.com</p>
-    </section>
+                <div class="resume-block">
+                    <h3>Education</h3>
+                    <div class="resume-item">
+                        <h4>BS in Graphics and Design</h4>
+                        <span class="date">CTU – Main Campus | 2023 – Present</span>
+                        <p>Focusing on Filipino indigenous culture & sustainable design.</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4>Senior High School</h4>
+                        <span class="date">Jugan National High School | 2021 – 2023</span>
+                        <p>Survived Research & Immersion with sanity intact.</p>
+                         <button class="btn" onclick="window.location.href='#contact'">Contact Me!</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resume-right">
+                <div class="resume-block specs">
+                    <h3>Tech Specs</h3>
+                    <div class="spec-tag">2D Animation</div>
+                    <div class="spec-tag">Sound Design</div>
+                    <div class="spec-tag">Video Editing</div>
+                    <div class="spec-tag">Web Dev</div>
+                    <div class="spec-tag">Scriptwriting</div>
+                </div>
+
+                <div class="resume-block">
+                    <h3>The Vouch Squad</h3>
+                    <div class="reference">
+                        <strong>Imong Mama</strong>
+                        <p>Mama nako puhon | ayieeee</p>
+                    </div>
+                    <div class="reference">
+                        <strong>Mr. Imissu</strong>
+                        <p>:(( | Smart na globe 0922 ayg tuo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+   <section id="contact" class="contact">
+    <div class="contact-container">
+        <h2 class="section-title">Let's Collaborate</h2>
+        <p class="contact-subtitle">Currently open to freelance multimedia projects and creative tech partnerships.</p>
+        
+        <div class="contact-grid">
+            <a href="mailto:yujhervy@gmail.com" class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Email Me</h3>
+                <p>yujhervy@gmail.com</p>
+            </a>
+
+           <div class="social-links-container">
+    <h3>Find me at @hervuwu</h3>
+    <div class="social-grid">
+        <a href="https://facebook.com/jhonhervy.yu" target="_blank" class="social-tag">
+            <i class="fa-brands fa-facebook"></i> Facebook
+        </a>
+        <a href="https://instagram.com/hervuwu" target="_blank" class="social-tag">
+            <i class="fa-brands fa-instagram"></i> Instagram
+        </a>
+        <a href="https://threads.net/@hervuwu" target="_blank" class="social-tag">
+            <i class="fa-brands fa-threads"></i> Threads
+        </a>
+        <a href="https://x.com/hervuwu" target="_blank" class="social-tag">
+            <i class="fa-brands fa-x-twitter"></i> X
+        </a>
+    </div>
+</div>
+    <button class="btn" onclick="window.alert('Note: This is a Virus... I miss you :(')">Suprise...</button>
+</section>
     </main>
         <footer>
             <p>&copy; 2023 Jhon Hervy Yu. All rights reserved.</p>
@@ -79,6 +192,7 @@
    </div>
 
    <script>
+    
 /*
     This script handles the functionality of the hamburger menu for mobile devices. When the menu icon is clicked, it toggles the visibility of the navigation links. Additionally, when a navigation link is clicked, it ensures that the menu closes, providing a smooth user experience on mobile devices.
 */
@@ -104,10 +218,6 @@
     }
 });
 
-    menuIcon.addEventListener('click', () => {
-        navList.classList.toggle('active');
-        menuIcon.classList.toggle('is-open'); // Add this line
-});
 
 /*
     This script listens for scroll events and adjusts the opacity of the home content and profile picture based on how far down the user has scrolled. The content will fade out as the user scrolls down, creating a smooth transition effect.
@@ -136,6 +246,30 @@ window.addEventListener('scroll', () => {
         homeContent.style.opacity = 0;
         pfpContainer.style.opacity = 0;
     }
+});
+
+/* Anims */
+
+/* Anims - Updated to watch ALL sections */
+
+const observerOptions = {
+    threshold: 0.15 // Trigger slightly earlier for a smoother feel
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('appear');
+        } else {
+            entry.target.classList.remove('appear'); 
+        }
+    });
+}, observerOptions);
+
+// This tells the observer to watch every <section> tag on your page
+// (Home, About, Resume, and Contact)
+document.querySelectorAll('section').forEach(section => {
+    observer.observe(section);
 });
 </script>
 </body>
