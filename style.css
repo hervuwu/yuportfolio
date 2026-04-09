@@ -1,4 +1,6 @@
-/* 1. Global Optimization */
+/* =========================================
+   1. GLOBAL & LAYOUT BASE
+   ========================================= */
 html {
     scroll-behavior: smooth;
 }
@@ -7,11 +9,10 @@ body {
     font-family: 'Google Sans', 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    /* Using a fixed background can be heavy; background-attachment: fixed is a common lag culprit */
     background: linear-gradient(135deg, #90bcfe 0%, #a83878 100%) fixed;
+    overflow-x: hidden; /* Prevents horizontal scrolling issues on mobile */
 }
 
-/* 2. Layout */
 main {
     width: 100%;
 }
@@ -23,10 +24,14 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 80px 20px; /* Top padding ensures fixed nav doesn't hide titles */
+    padding: 80px 20px;
     box-sizing: border-box;
     scroll-margin-top: 70px;
 }
+
+/* =========================================
+   2. TYPOGRAPHY & BUTTONS
+   ========================================= */
 .bigHeading {
     font-size: 6rem;
     margin-bottom: 20px;
@@ -34,19 +39,86 @@ section {
     text-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-/* 3. Section Styling - Optimized Glassmorphism */
-.about-me, .resume, .contact {
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 80vw;
-    /* Removed max-height: 40vh; so content doesn't overflow */
-    margin: 80px auto;
-    padding: 40px;
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #7a37a6 0%, #b83881 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
 }
 
-/* 4. Navbar - Performance Fix */
+.btn {
+    font-family: 'Google Sans', 'Montserrat', sans-serif;
+    font-size: 1rem;
+    margin: 2rem 0;
+    padding: 15px 35px;
+    background: linear-gradient(135deg, #7a37a6 0%, #b83881 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(122, 55, 166, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 25px rgba(122, 55, 166, 0.4);
+    filter: brightness(1.1);
+}
+
+/* =========================================
+   3. SHARED SECTION STYLES (GLASSMORPHISM)
+   ========================================= */
+   /* =========================================
+   3. UNIFIED GLASSMORPHISM PANELS
+   ========================================= */
+.glass-panel, .portfolio-category, .about-me, .resume, .contact {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 60px;
+    color: #333;
+    
+    /* Animation defaults */
+    opacity: 0; 
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform, opacity;
+}
+
+.glass-panel.appear, .portfolio-category.appear, .about-me.appear, .resume.appear, .contact.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+.about-me, .resume, .contact, .portfolio-category {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 50px;
+    color: #333;
+    box-sizing: border-box;
+    opacity: 0; 
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform, opacity;
+}
+
+.about-me.appear, .resume.appear, .contact.appear, .portfolio-category.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   4. NAVBAR
+   ========================================= */
 .navbar {
     position: fixed;
     top: 0;
@@ -58,39 +130,8 @@ section {
     padding: 10px 2%;
     box-sizing: border-box;
     transition: background 0.3s ease, padding 0.3s ease;
-    /* Helps browser optimize the layer for scrolling */
     will-change: background, padding; 
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-.hari {
-    font-size: 2rem;
-    font-weight: bold;
-    display: flex; /* Keeps letters together in a row */
-    gap: 2px;
-    color: antiquewhite;
-}
-
-.hari span {
-    display: inline-block;
-    color: #fff;
-    /* This calculates a 0.1s delay for every letter index */
-    animation: wavy-text 2s ease-out infinite;
-    animation-delay: calc(0.1s * var(--i));
-}
-.navbar.scrolled .hari span {
-    color: #333;
-}
-@keyframes wavy-text {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-15px); /* How high the wave goes */
-        color: #ffffff; /* Optional: change color at the peak of the wave! */
-    }
-}
-/* Glass effect only used here to save resources */
-.navbar {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -100,11 +141,10 @@ section {
 .navbar.scrolled {
     background: rgba(255, 255, 255, 0.95);
     padding: 0px 5%;
-    backdrop-filter: none; /* Disabling blur on solid background saves GPU */
+    backdrop-filter: none; 
     -webkit-backdrop-filter: none;
 }
 
-/* 5. Navigation Items */
 .navbar ul {
     list-style: none;
     display: flex;
@@ -120,8 +160,8 @@ section {
     transition: color 0.3s ease;
 }
 
-.navbar.scrolled .hari, 
-.navbar.scrolled ul li a {
+.navbar.scrolled ul li a,
+.navbar.scrolled .hari {
     color: #333;
 }
 
@@ -129,13 +169,37 @@ section {
     filter: invert(1);
 }
 
-/* 6. Responsive Menu - Cleaned up redundant queries */
 .menu-icon {
     display: none;
     width: 30px;
     height: 30px;
     cursor: pointer;
 }
+
+/* Animated Logo Text */
+.hari {
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    gap: 2px;
+    color: antiquewhite;
+}
+
+.hari span {
+    display: inline-block;
+    color: #fff;
+    animation: wavy-text 2s ease-out infinite;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes wavy-text {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); color: #ffffff; }
+}
+
+/* =========================================
+   5. HOME SECTION & WAVES
+   ========================================= */
 .home {
     display: flex;
     flex-direction: row;
@@ -145,33 +209,63 @@ section {
     padding: 0 10%;
     min-height: 100vh;
     box-sizing: border-box;
-    
-    /* 1. Add float to the entire section */
     animation: main-float 6s ease-in-out infinite;
     will-change: transform;
-
     position: relative;
-    overflow: hidden; /* Keeps waves inside the section */
-    /* Integrated your existing palette: Blue, Magenta, and Cyan */
-    background: linear-gradient(315deg, 
-        #a83878 3%, 
-        #7194c7 38%, 
-        #3aa19b 68%, 
-        #a83878 98%);
+    overflow: hidden;
+    background: linear-gradient(315deg, #a83878 3%, #7194c7 38%, #3aa19b 68%, #a83878 98%);
     background-size: 400% 400%;
     animation: gradient-shift 15s ease infinite;
     z-index: 1;
 }
+
 @keyframes gradient-shift {
     0% { background-position: 0% 0%; }
     50% { background-position: 100% 100%; }
     100% { background-position: 0% 0%; }
 }
 
+@keyframes main-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.home-content, .pfp-container {
+    transition: opacity 0.1s linear; 
+    will-change: opacity; 
+}
+
+.home-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.pfp-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.pfp {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 8px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Waves */
 .wave {
-    background: rgb(255 255 255 / 15%); /* Subtle white glass look */
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 1000% 1000% 0 0;
-    position: absolute; /* Absolute instead of Fixed to stay in Home */
+    position: absolute; 
     width: 200%;
     height: 12em;
     animation: wave-move 10s -3s linear infinite;
@@ -179,7 +273,7 @@ section {
     opacity: 0.5;
     bottom: 0;
     left: 0;
-    z-index: -1; /* Sits behind text and PFP */
+    z-index: -1; 
 }
 
 .wave:nth-of-type(2) {
@@ -202,204 +296,84 @@ section {
     100% { transform: translateX(0); }
 }
 
-@keyframes main-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
-.home-content, .pfp-container {
-    /* Existing float animations... */
-    transition: opacity 0.1s linear; /* Short duration for real-time feel */
-    will-change: opacity; /* Optimizes for performance */
-}
-.home-content {
-    flex: 1; /* Takes up available space */
-    max-width: 600px;
-}
-
-.pfp-container {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end; /* Pushes the image to the far right */
-}
-
-.pfp {
-    width: 500px; /* Increased size since it has its own side now */
-    height: 500px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 8px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-    animation: float 4s ease-in-out infinite;
-}
-.btn {
-    font-family: 'Google Sans', 'Montserrat', sans-serif;
-    font-size: 1rem;
-    margin: 2rem 0; /* Changed to 2rem 0 to prevent pushing it left/right */
-    padding: 15px 35px;
-    background: linear-gradient(135deg, #7a37a6 0%, #b83881 100%);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 10px 20px rgba(122, 55, 166, 0.3);
-    transition: all 0.3s ease;
-}
-
-.btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 15px 25px rgba(122, 55, 166, 0.4);
-    filter: brightness(1.1);
-}
-
-/* 8. About Me Section */
-
-.about-me {
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 1200px; /* Increased to fit both sides comfortably */
-    margin: 80px auto;
-    padding: 50px;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    box-sizing: border-box;
-    overflow: hidden; /* Prevents cards from spilling out */
-
-    opacity: 0;
-    transform: translateY(50px) scale(0.95);
-    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: transform, opacity;
-
-}
-.about-me.appear {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
+/* =========================================
+   6. ABOUT ME
+   ========================================= */
 .about-container {
     display: flex;
+    flex-wrap: wrap;
     gap: 50px;
-    align-items: flex-start; /* Better for varying text lengths */
+    align-items: flex-start;
     width: 100%;
 }
 
 .about-text {
     flex: 1.5;
+    min-width: 300px;
     text-align: left;
-    text-align: justify;
-    text-justify: inter-word;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, #7a37a6 0%, #b83881 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
 }
 
 .about-text p {
     line-height: 1.8;
     font-size: 1.1rem;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    color: #444;
 }
 
-/* Skills Grid */
 .skills-grid {
     flex: 1;
-    display: grid;
-    grid-template-columns: 1fr; /* Single column inside the grid */
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-    width: 100%;
 }
 
 .skill-card {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 20px;
-    border-radius: 15px;
+    border-left: 4px solid #7a37a6;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
-}
-/* Tablet View (Side-by-side gets cramped) */
-@media (max-width: 992px) {
-    .about-me {
-        padding: 30px;
-    }
-    .about-container {
-        gap: 20px;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* Mobile View (Stacking) */
-@media (max-width: 768px) {
-    .about-me {
-        padding: 20px;
-        margin: 50px auto;
-        padding-top: 20%;
-    }
-
-    .about-container {
-        flex-direction: column; /* Stacks cards under text */
-        align-items: center;
-    }
-
-    .about-text {
-        min-width: 100%;
-        text-align: justify;
-
-    }
-
-    .section-title {
-        font-size: 2rem; /* Shorter title for mobile */
-    }
-
-    .skills-grid {
-        min-width: 100%;
-        width: 100%;
-        padding: 1rem;
-    }
-    
-    .skill-card {
-        padding: 2px;
-    }
+.skill-card:hover {
+    transform: translateX(5px);
 }
 
-/* resume */
-.resume {
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 20px;
-    width: 90%;
-    max-width: 1100px;
-    margin: 80px auto;
-    padding: 60px 40px;
-    opacity: 0; /* Starting state for animation */
-    transform: translateY(50px);
-    transition: all 0.8s ease-out;
-
-    scroll-margin-top: 100px; /* Adjust based on navbar height */
-    will-change: transform, opacity; /* Better performance */
+.skill-icon {
+    font-size: 1.5rem;
+    color: #7a37a6;
+    margin-bottom: 10px;
 }
+
+.skill-card h3 {
+    margin: 0 0 8px 0;
+    color: #222;
+    font-size: 1.2rem;
+}
+
+.skill-card p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* =========================================
+   7. RESUME / TECH SPECS
+   ========================================= */
 .resume.appear .resume-item {
     animation: fadeInUp 0.6s ease forwards;
 }
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-.resume.appear {
-    opacity: 1;
-    transform: translateY(0);
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .resume-grid {
@@ -407,7 +381,6 @@ section {
     grid-template-columns: 2fr 1fr;
     gap: 40px;
     text-align: left;
-    color: #333;
 }
 
 .resume-block h3 {
@@ -418,36 +391,11 @@ section {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
 .resume-block.specs {
     display: flex;
-    flex-direction: column; /* Ensures the 'TECH SPECS' h3 stays on top */
+    flex-direction: column;
     align-items: flex-start;
-}
-
-.specs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center; /* Vertical alignment for tags */
-    justify-content: flex-start;
-    margin-top: 10px;
-    width: 100%; /* Ensures it uses the full right-column width */
-}
-
-.spec-tag {
-    display: flex; /* Changed from inline-block for better centering */
-    align-items: center;
-    justify-content: center;
-    background: rgba(122, 55, 166, 0.1);
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: #7a37a6;
-    white-space: nowrap;
-    height: 35px; /* Fixed height ensures all tags are identical */
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
 }
 
 .resume-item {
@@ -466,68 +414,269 @@ section {
     margin-bottom: 10px;
 }
 
-/* Tech Specs Styling */
 .specs {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    align-items: flex-start; /* CRITICAL: Prevents tags from stretching vertically */
+    align-items: flex-start;
     justify-content: flex-start;
     margin-top: 10px;
-    
+    width: 100%;
 }
 
 .spec-tag {
-    display: inline-block; /* Ensures the tag only takes up as much space as the text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: rgba(122, 55, 166, 0.1);
-    padding: 8px 15px;
+    padding: 8px 18px;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: bold;
     color: #7a37a6;
-    white-space: nowrap; /* Prevents the text from wrapping inside the tag */
-    height: fit-content; /* Force height to match text */
+    white-space: nowrap;
+    height: 35px;
     transition: all 0.3s ease;
     border: 1px solid transparent;
 }
+
 .spec-tag:hover {
     background: rgba(122, 55, 166, 0.2);
     transform: translateY(-2px);
     border-color: rgba(122, 55, 166, 0.3);
 }
-.reference {
-    margin-bottom: 15px;
-    font-size: 0.9rem;
+
+/* =========================================
+   8. FEATURED WORKS (INDEX PREVIEW GRID)
+   ========================================= */
+.featured-works-section {
+    padding: 80px 20px;
+    background-color: #fafafa;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .resume-grid {
-        grid-template-columns: 1fr;
-    }
-    .resume {
-        padding: 40px 20px;
-    }
+.works-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
-/* 7. Responsive Design */
 
-/* contact */
-.contact {
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 20px;
-    width: 90%;
-    max-width: 1100px;
-    margin: 80px auto;
-    padding: 60px 40px;
+.preview-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px 20px;
     text-align: center;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease-out;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(122, 55, 166, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.contact.appear {
-    opacity: 1;
-    transform: translateY(0);
+.preview-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(122, 55, 166, 0.15);
+    border-color: rgba(122, 55, 166, 0.4);
+}
+
+.preview-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(122, 55, 166, 0.1);
+    color: #7a37a6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.preview-card:hover .preview-icon {
+    background: #7a37a6;
+    color: #ffffff;
+}
+
+.preview-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: #222;
+}
+
+.preview-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* =========================================
+   9. PORTFOLIO GALLERY (FULL PAGE)
+   ========================================= */
+.portfolio-main {
+    padding-top: 120px;
+    padding-bottom: 60px;
+    min-height: 100vh;
+}
+
+.portfolio-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.portfolio-header h1 {
+    font-size: 3rem;
+}
+
+.portfolio-header p {
+    color: antiquewhite;
+    font-size: 1.2rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.active-link {
+    color: #b83881 !important;
+    border-bottom: 2px solid #b83881;
+}
+
+.portfolio-gallery {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.category-title {
+    font-size: 2rem;
+    color: #7a37a6;
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(122, 55, 166, 0.2);
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.gallery-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex; 
+    flex-direction: column; 
+    text-decoration: none;
+    color: inherit;
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(122, 55, 166, 0.2);
+}
+
+.card-media {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-media img, .card-media iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+}
+
+.placeholder-media {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #c3d9fb;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.card-info {
+    padding: 25px 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+.card-info h3 {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-size: 1.25rem;
+    line-height: 1.3;
+}
+
+.card-role {
+    font-size: 0.85rem;
+    color: #b83881;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-info p {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-top: auto; 
+}
+
+.tech-tags span {
+    background: rgba(122, 55, 166, 0.1);
+    color: #7a37a6;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.portfolio-footer-cta {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* =========================================
+   10. CONTACT & FOOTER
+   ========================================= */
+.contact {
+    text-align: center;
 }
 
 .contact-subtitle {
@@ -592,26 +741,97 @@ section {
     box-shadow: 0 6px 15px rgba(184, 56, 129, 0.3);
 }
 
-@media (max-width: 768px) {
-    .contact {
-        padding: 40px 20px;
+footer {
+    color: #4e0048;
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.21);
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9.6px);
+    -webkit-backdrop-filter: blur(9.6px);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+/* =========================================
+   10. CONTACT & FOOTER
+   ========================================= */
+.contact-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.social-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-tag {
+    text-decoration: none;
+    background: #fff;
+    color: #b83881;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(184, 56, 129, 0.2);
+}
+
+.social-tag:hover {
+    background: #b83881;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(184, 56, 129, 0.3);
+}
+
+footer {
+    color: #4e0048;
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.21);
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 40px;
+}
+
+/* =========================================
+   11. UNIFIED RESPONSIVE STYLES (TABLET/MOBILE)
+   ========================================= */
+
+/* For Tablets and smaller desktop screens */
+@media (max-width: 992px) {
+    .about-me, .resume, .contact, .portfolio-category {
+        padding: 30px;
+        width: 95%;
     }
-    .social-tag {
-        width: 120px; /* Consistent width on mobile */
+    
+    .home {
+        padding: 0 5%;
+    }
+    
+    .about-container {
+        gap: 30px;
     }
 }
+
+/* For Mobile Phones */
 @media (max-width: 768px) {
+    /* Navbar Dropdown */
     .menu-icon {
         display: block;
         transition: transform 0.4s ease;
     }
-
-    .menu-icon.is-open {
-    transform: rotate(90deg); /* Spins the burger 90 degrees */
-    }
-
+    
     .navbar ul {
-        display: none; /* Controlled by 'active' class */
+        display: none;
         position: absolute;
         top: 100%;
         left: 0;
@@ -619,375 +839,113 @@ section {
         flex-direction: column;
         background: rgba(255, 255, 255, 0.98);
         padding: 20px 0;
-        gap: 10px;
+        gap: 15px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-
+    
     .navbar ul.active {
         display: flex;
     }
-
+    
     .navbar ul li a {
-        color: #333; /* Dark text for mobile menu readability */
+        color: #333; /* Make text dark so it's readable on white background */
         display: block;
         padding: 10px;
         text-align: center;
+        font-size: 1.1rem;
     }
+
     .hari {
         font-size: 1.5rem;
     }
+
+    /* Home Hero Section */
     .home {
-        flex-direction: column-reverse; /* Put text below image on mobile */
+        flex-direction: column-reverse; /* Stacks text under the image */
         justify-content: center;
         text-align: center;
-        padding-top: 100px; /* Space for the fixed navbar */
+        padding-top: 120px; 
     }
+    
+    .home-content {
+        margin-top: 20px;
+    }
+
     .bigHeading {
-        font-size: 3rem; /* Smaller heading on mobile */
+        font-size: 2.5rem; /* Shrink giant text */
+        line-height: 1.2;
     }
+
     .pfp-container {
-        padding-top: 10px;
         justify-content: center;
-        margin-bottom: 20px;
+        width: 100%;
     }
 
     .pfp {
-        width: 200px;
-        height: 200px;
+        width: 220px; /* Shrink image so it fits on screen */
+        height: 220px;
+        border-width: 4px;
     }
 
+    /* Main Section Containers */
+    .about-me, .resume, .contact, .portfolio-category {
+        padding: 25px 15px;
+        margin: 40px auto;
+        width: 95%;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    /* About Section */
     .about-container {
         flex-direction: column;
+        align-items: center;
         text-align: center;
     }
-    
-    .skills-grid {
-        width: 100%;
+
+    .about-text {
+        text-align: center;
     }
-}
 
-.portfolio-gallery {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-}
-
-.portfolio-category {
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.category-title {
-    font-size: 2rem;
-    color: #7a37a6;
-    margin-bottom: 30px;
-    border-bottom: 2px solid rgba(122, 55, 166, 0.2);
-    padding-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.gallery-card {
-    flex: 1 1 300px;
-    max-width: 400px;
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(0,0,0,0.05);
-    
-    /* NEW: Makes the card a flex container */
-    display: flex; 
-    flex-direction: column; 
-}
-
-.gallery-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(122, 55, 166, 0.2);
-}
-
-.card-media {
-    width: 100%;
-    aspect-ratio: 16 / 9; /* Perfect for video thumbnails and art */
-    background: #eee;
-    overflow: hidden;
-}
-
-/* Delete this class once you add real images */
-.placeholder-media {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #c3d9fb;
-    color: #333;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-/* Ensure real images fit perfectly */
-.card-media img, .card-media iframe {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border: none;
-}
-
-/* Update the info container */
-.card-info {
-    padding: 25px 20px; /* Slightly more padding for breathing room */
-    text-align: left; /* Changed from center */
-    
-    /* NEW: Forces the container to fill height and pushes tags down */
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; 
-}
-
-.card-info h3 {
-    margin: 0 0 5px 0;
-    color: #333;
-    font-size: 1.25rem;
-    line-height: 1.3;
-}
-
-/* NEW: A special class for your project roles */
-.card-role {
-    font-size: 0.85rem;
-    color: #b83881; /* Uses your theme's pink/magenta */
-    font-weight: bold;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* Update the paragraph text */
-.card-info p {
-    color: #555;
-    font-size: 0.9rem; /* Slightly smaller */
-    margin-bottom: 25px;
-    line-height: 1.6; /* Taller line height for readability */
-    text-align: left; /* Removed justify! */
-}
-
-/* Update the tags container */
-.tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* Align tags to the left */
-    gap: 8px;
-    
-    /* NEW: Pushes the tags to the absolute bottom of the card */
-    margin-top: auto; 
-}
-
-/* Mobile Adjustments for Gallery */
-@media (max-width: 768px) {
-    .portfolio-category {
-        padding: 25px 15px;
+    /* Resume Section */
+    .resume-grid {
+        grid-template-columns: 1fr; /* Make resume single column */
+        gap: 20px;
     }
+
+    .specs {
+        justify-content: center; /* Center the tags on mobile */
+    }
+
+    /* Contact Section */
+    .social-tag {
+        width: 130px;
+        text-align: center;
+    }
+
+    /* Portfolio Pages & Grids */
     .category-title {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        flex-direction: column; /* Stacks icon above title if screen is too narrow */
+        text-align: center;
+        gap: 5px;
     }
-}
 
-footer {
-    color: #4e0048;
-    background: (135deg, #7a37a6 0%, #b83881 100%);
-    text-align: center;
-    padding: 20px;
-   /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.21);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(9.6px);
-    -webkit-backdrop-filter: blur(9.6px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* =========================================
-   PORTFOLIO GALLERY PAGE STYLES
-   ========================================= */
-
-.portfolio-main {
-    padding-top: 120px;
-    padding-bottom: 60px;
-    min-height: 100vh;
-}
-
-.portfolio-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.portfolio-header h1 {
-    font-size: 3rem;
-}
-
-.portfolio-header p {
-    color: antiquewhite;
-    font-size: 1.2rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
-.active-link {
-    color: #b83881 !important;
-    border-bottom: 2px solid #b83881;
-}
-
-.portfolio-gallery {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-}
-
-.portfolio-category {
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.category-title {
-    font-size: 2rem;
-    color: #7a37a6;
-    margin-bottom: 30px;
-    border-bottom: 2px solid rgba(122, 55, 166, 0.2);
-    padding-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-/* Flexbox Grid Update for centering items */
-.gallery-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-}
-
-.gallery-card {
-    flex: 1 1 300px;
-    max-width: 400px;
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(0,0,0,0.05);
-}
-
-.gallery-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(122, 55, 166, 0.2);
-}
-
-.card-media {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    overflow: hidden;
-    position: relative;
-}
-
-.card-media img, .card-media iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover;
-    border: none;
-}
-
-.placeholder-media {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #c3d9fb;
-    color: #333;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-/* Specific Placeholder Colors */
-.bg-ad { background: #fdf5d3; }
-.bg-art { background: #e2c0e8; }
-.bg-sketch { background: #f0e6f2; }
-.bg-web { background: #c0e8e0; }
-
-.card-info {
-    padding: 20px;
-    text-align: center;
-}
-
-.card-info h3 {
-    margin: 0 0 10px 0;
-    color: #333;
-    font-size: 1.2rem;
-}
-
-.card-info p {
-    color: #666;
-    font-size: 0.95rem;
-    margin-bottom: 15px;
-    line-height: 1.5;
-    text-align: justify;
-}
-
-.tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-}
-
-.tech-tags span {
-    background: rgba(122, 55, 166, 0.1);
-    color: #7a37a6;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-.portfolio-footer-cta {
-    text-align: center;
-    margin-top: 50px;
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .portfolio-category {
-        padding: 25px 15px;
-    }
-    .category-title {
-        font-size: 1.5rem;
-    }
     .portfolio-header h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
+
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Force 1 column on mobile */
+    }
+
     .gallery-card {
-        max-width: 100%; /* Allows cards to stretch on phones */
+        max-width: 100%; /* Allows cards to stretch full width of screen */
+    }
+    
+    .works-preview-grid {
+        grid-template-columns: 1fr; /* Force works preview to 1 column */
     }
 }

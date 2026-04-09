@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-     <link rel="icon" type="image/x-icon" href="src/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="src/images/favicon.ico">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -22,256 +22,279 @@
    
    <ul>
         <li><a href="#home">Home</a></li>
+        <li><a href="#works">Works</a></li>
         <li><a href="#about">About Me</a></li>
         <li><a href="#resume">Resume</a></li>
-        <li><a href="#works">Works</a></li> <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Contact</a></li>
     </ul>
 
     <img src="src/images/menu.svg" alt="menu" class="menu-icon">
     </nav>
 
-   
-
     <main>
-       <section id="home" class="home">
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-    <div class="home-content">
-        <h1 class="bigHeading">Welcome to My Portfolio</h1>
-        <p style="color: antiquewhite; font-weight: 200; text-shadow: 0 2px 5px rgba(0,0,0,0.3)" >Multi-disciplinary Multimedia Artist | Graphics and Design Student at Cebu Technological University</p>
-        <button class="btn" onclick="window.location.href='#about'">About me!</button>
-    </div>
-
-    <div class="pfp-container">
-        <img src="src/images/yu.png" alt="Jhon Hervy Yu" class="pfp">
-    </div>
-</section>
-
-    <section id="about" class="about-me">
-        <div class="about-container">
-        <div class="about-text">
-       <h2 class="section-title">About Me</h2>
-    <p>
-        I am a <strong>Multi-disciplinary Multimedia Artist</strong> with comprehensive experience across the full filmmaking lifecycle, from pre-production (writing, storyboarding) to specialized cinematic post-production (video editing, color grading, and professional sound design).
-    </p> 
-    <p> 
-        Also proficient in 2D illustration, graphic design, and front-end web development, I leverage my diverse technical skills to drive collaborative and cohesive digital projects.
-    </p>
-    
-    <p>Currently exploring: Non-linear RPG mechanics in Godot, Kotlin (Android App Development), Three.js, and Blender.</p>
-
-    <button class="btn" onclick="window.location.href='#resume'">Credentials and Qualifications</button>
-</div>
-    
-
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3>Production & Post</h3>
-                <p>Video Editing (Premiere, DaVinci), Color Grading, ADR, Sound Design (ReaperFM), & Motion Graphics</p>
+        <section id="home" class="home">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="home-content">
+                <h1 class="bigHeading">Welcome to My Portfolio</h1>
+                <p style="color: antiquewhite; font-weight: 200; text-shadow: 0 2px 5px rgba(0,0,0,0.3)" >Multi-disciplinary Multimedia Artist | Graphics and Design Student at Cebu Technological University</p>
+                <button class="btn" onclick="window.location.href='#works'">View My Works!</button>
             </div>
-            <div class="skill-card">
-                <h3>Visual Arts</h3>
-                <p>2D Animation, Character Design, Storyboarding, Clip Studio Paint, Adobe Animate, & Digital Cartooning</p>
-            </div>
-            <div class="skill-card">
-                <h3>Development</h3>
-                <p>Front-end (HTML, CSS, JS), React, Python, & Web Optimization for multimedia</p>
-            </div>
-        </div>
-      
-    </div>
-    </section>
 
-   <section id="resume" class="resume">
+            <div class="pfp-container">
+                <img src="src/images/yu.png" alt="Jhon Hervy Yu" class="pfp">
+            </div>
+        </section>
+
+      <section id="works" class="featured-works-section">
     <div class="resume-container">
-        <h2 class="section-title">The Creative Stack</h2>
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 class="section-title">Selected Works</h2>
+            <p style="font-size: 1.1rem; color: #555; max-width: 600px; margin: 0 auto;">
+                A curated collection of my creative disciplines, bridging the gap between technical execution and visual storytelling.
+            </p>
+        </div>
         
-        <div class="resume-content">
+        <div class="works-preview-grid">
             
-            <div class="resume-block">
-                <h3>Experience</h3>
-                <div class="resume-item">
-                    <h4>Freelance Multimedia Artist</h4>
-                    <span class="date">2021 – Present</span>
-                    <ul>
-                        <li>Managed end-to-end film production (writing, editing, color grading, ADR, sound design).</li>
-                        <li>Created custom 2D illustrations and visual assets for digital branding.</li>
-                        <li>Optimized multimedia web content using HTML and CSS.</li>
-                    </ul>
+            <a href="portfolio.html" class="preview-card">
+                <div class="preview-icon">
+                    <i class="fa-solid fa-clapperboard"></i>
                 </div>
-            </div>
-
-            <div class="resume-block">
-                <h3>Education</h3>
-                <div class="resume-item">
-                    <h4>BS in Graphics and Design</h4>
-                    <span class="date">Cebu Technological University | 2023 – Present</span>
-                </div>
-                <div class="resume-item">
-                    <h4>Senior High School</h4>
-                    <span class="date">Jugan National High School | 2021 – 2023</span>
-                </div>
-            </div>
-
-            <div class="resume-block specs">
-                <h3>Software Stack</h3>
-                <div class="specs">
-                    <div class="spec-tag">Adobe Creative Suite</div>
-                    <div class="spec-tag">DaVinci Resolve</div>
-                    <div class="spec-tag">Clip Studio Paint</div>
-                    <div class="spec-tag">Blender</div>
-                    <div class="spec-tag">ReaperFM</div>
-                </div>
-            </div>
-
-            <div style="margin-top: 30px; text-align: left;">
-                <button class="btn" onclick="window.location.href='#contact'">Contact Me!</button>
-            </div>
-
-        </div>
-    </div>
-</section>
-<section id="works" class="resume">
-    <div class="resume-container" style="text-align: center;">
-        <h2 class="section-title">Selected Works</h2>
-        <p style="margin-bottom: 30px; font-size: 1.1rem; color: #333;">
-            A curated collection of my 2D animations, film post-production, sound design, and web development projects.
-        </p>
-        
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px;">
-            <div style="background: rgba(122, 55, 166, 0.1); border-radius: 15px; width: 250px; height: 150px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #7a37a6;">
-                🎬 Film & Audio
-            </div>
-            <div style="background: rgba(122, 55, 166, 0.1); border-radius: 15px; width: 250px; height: 150px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #7a37a6;">
-                🎨 2D Illustration
-            </div>
-            <div style="background: rgba(122, 55, 166, 0.1); border-radius: 15px; width: 250px; height: 150px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #7a37a6;">
-                💻 Web Dev
-            </div>
-        </div>
-
-        <button class="btn" onclick="window.location.href='portfolio.html'">View Full Portfolio</button>
-    </div>
-</section>
-
-   <section id="contact" class="contact">
-    <div class="contact-container">
-        <h2 class="section-title">Let's Collaborate</h2>
-        <p class="contact-subtitle">Currently open to freelance multimedia projects and creative tech partnerships.</p>
-        
-        <div class="contact-grid">
-            <a href="mailto:yujhervy@gmail.com" class="contact-card">
-                <div class="contact-icon">✉️</div>
-                <h3>Email Me</h3>
-                <p>yujhervy@gmail.com</p>
+                <h3>Film & Audio</h3>
+                <p>Narrative short films, commercial editing, color grading, and immersive foley soundscapes.</p>
             </a>
 
-           <div class="social-links-container">
-    <h3>Find me at @hervuwu</h3>
-    <div class="social-grid">
-        <a href="https://facebook.com/jhonhervy.yu" target="_blank" class="social-tag">
-            <i class="fa-brands fa-facebook"></i> Facebook
-        </a>
-        <a href="https://instagram.com/hervuwu" target="_blank" class="social-tag">
-            <i class="fa-brands fa-instagram"></i> Instagram
-        </a>
-        <a href="https://threads.net/@hervuwu" target="_blank" class="social-tag">
-            <i class="fa-brands fa-threads"></i> Threads
-        </a>
-        <a href="https://x.com/hervuwu" target="_blank" class="social-tag">
-            <i class="fa-brands fa-x-twitter"></i> X
-        </a>
+            <a href="portfolio.html" class="preview-card">
+                <div class="preview-icon">
+                    <i class="fa-solid fa-palette"></i>
+                </div>
+                <h3>2D Illustration</h3>
+                <p>Character design turnarounds, expressive key art, and stylized background environments.</p>
+            </a>
+
+            <a href="portfolio.html" class="preview-card">
+                <div class="preview-icon">
+                    <i class="fa-solid fa-bezier-curve"></i>
+                </div>
+                <h3>Graphic Design</h3>
+                <p>Complete visual identities, UI/UX interface design, and high-impact promotional materials.</p>
+            </a>
+
+
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <button class="btn" onclick="window.location.href='portfolio.html'">
+                Explore Full Portfolio <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+            </button>
+        </div>
     </div>
-</div>
-    <button class="btn" onclick="window.alert('Note: This is a Virus... I miss you :(')">Suprise...</button>
+</section>
+        <section id="about" class="about-me">
+    <div class="about-container">
+        <div class="about-text">
+            <h2 class="section-title">About Me</h2>
+            <p>
+                I am a <strong>Multi-disciplinary Multimedia Artist</strong> with comprehensive experience across the full filmmaking lifecycle, from pre-production (writing, storyboarding) to specialized cinematic post-production (video editing, color grading, and professional sound design).
+            </p> 
+            <p> 
+                Also proficient in 2D illustration, graphic design, and front-end web development, I leverage diverse technical skills to drive collaborative and cohesive digital projects.
+            </p>
+
+            <button class="btn" onclick="window.location.href='#resume'">Credentials and Qualifications</button>
+        </div>
+    
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fa-solid fa-film"></i></div>
+                <h3>Production & Post</h3>
+                <p>Video Editing, Color Grading, ADR, Sound Design, & Motion Graphics.</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                <h3>Visual Arts</h3>
+                <p>2D Character Design, Sequential Art, Storyboarding, & Digital Cartooning.</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fa-solid fa-code"></i></div>
+                <h3>Web Development</h3>
+                <p>Foundational HTML, CSS, JavaScript, and web optimization for multimedia.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <section id="resume" class="resume">
+            <div class="resume-container">
+                <h2 class="section-title">The Creative Stack</h2>
+                
+                <div class="resume-content">
+                    <div class="resume-block">
+                        <h3>Experience</h3>
+                        <div class="resume-item">
+                            <h4>Freelance Multimedia Artist</h4>
+                            <span class="date">2021 – Present</span>
+                            <ul>
+                                <li>Managed end-to-end film production (writing, editing, color grading, ADR, sound design).</li>
+                                <li>Created custom 2D illustrations and visual assets for digital branding.</li>
+                                <li>Optimized multimedia web content using HTML and CSS.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="resume-block">
+                        <h3>Education</h3>
+                        <div class="resume-item">
+                            <h4>Bachelor of Science in Graphics and Design</h4>
+                            <span class="date">Cebu Technological University | 2023 – Present</span>
+                        </div>
+                        <div class="resume-item">
+                            <h4>Senior High School</h4>
+                            <span class="date">Jugan National High School | 2021 – 2023</span>
+                        </div>
+                    </div>
+
+                    <div class="resume-block specs">
+                        <h3>Software Stack</h3>
+                        <div class="specs">
+                            <div class="spec-tag">Adobe Creative Suite</div>
+                            <div class="spec-tag">DaVinci Resolve</div>
+                            <div class="spec-tag">Clip Studio Paint</div>
+                            <div class="spec-tag">Blender</div>
+                            <div class="spec-tag">ReaperFM</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px; text-align: left;">
+                        <button class="btn" onclick="window.location.href='#contact'">Contact Me!</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="glass-panel">
+    <div class="section-header">
+        <h2 class="section-title">Let's Collaborate</h2>
+        <p class="section-subtitle">Currently open for freelance multimedia projects and creative partnerships.</p>
+    </div>
+    
+    <div class="contact-grid" style="gap: 20px;">
+        
+        <a href="mailto:yujhervy@gmail.com" class="btn" style="margin: 0; font-size: 1.1rem; text-transform: lowercase;">
+            <i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> yujhervy@gmail.com
+        </a>
+
+        <div class="social-grid" style="margin-top: 10px;">
+            <a href="https://facebook.com/jhonhervy.yu" target="_blank" class="social-tag">
+                <i class="fa-brands fa-facebook"></i> Facebook
+            </a>
+            <a href="https://instagram.com/hervuwu" target="_blank" class="social-tag">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://threads.net/@hervuwu" target="_blank" class="social-tag">
+                <i class="fa-brands fa-threads"></i> Threads
+            </a>
+            <a href="https://x.com/hervuwu" target="_blank" class="social-tag">
+                <i class="fa-brands fa-x-twitter"></i> X
+            </a>
+        </div>
+        
+        <span 
+            onclick="window.alert('Note: This is a Virus... I miss you :(')" 
+            style="cursor: pointer; color: #bbb; font-size: 0.8rem; margin-top: 30px; transition: color 0.3s ease;" 
+            onmouseover="this.style.color='#7a37a6'" 
+            onmouseout="this.style.color='#bbb'">
+            Surprise...
+        </span>
+
+    </div>
 </section>
     </main>
-        <footer>
-            <p>&copy; 2026 Jhon Hervy Yu. All rights reserved.   <strong>Responsive Design - Phones </strong> (WIP) </p>
-        </footer>
-   </div>
-
-   <script>
     
-/*
-    This script handles the functionality of the hamburger menu for mobile devices. When the menu icon is clicked, it toggles the visibility of the navigation links. Additionally, when a navigation link is clicked, it ensures that the menu closes, providing a smooth user experience on mobile devices.
-*/
-    const menuIcon = document.querySelector('.menu-icon');
-    const navList = document.querySelector('.navbar ul');
+    <footer>
+        <p>&copy; 2026 Jhon Hervy Yu. All rights reserved. </p>
+    </footer>
+    </div>
 
-    menuIcon.addEventListener('click', () => {
-        navList.classList.toggle('active');
-    });
+    <script>
+        /*
+            This script handles the functionality of the hamburger menu for mobile devices. When the menu icon is clicked, it toggles the visibility of the navigation links. Additionally, when a navigation link is clicked, it ensures that the menu closes, providing a smooth user experience on mobile devices.
+        */
+        const menuIcon = document.querySelector('.menu-icon');
+        const navList = document.querySelector('.navbar ul');
 
-    document.querySelectorAll('.navbar ul li').forEach(link => {
-        link.addEventListener('click', () => {
-            navList.classList.remove('active');
+        menuIcon.addEventListener('click', () => {
+            navList.classList.toggle('active');
         });
-    });
 
-    window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
+        document.querySelectorAll('.navbar ul li').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
 
 
-/*
-    This script listens for scroll events and adjusts the opacity of the home content and profile picture based on how far down the user has scrolled. The content will fade out as the user scrolls down, creating a smooth transition effect.
-*/
-window.addEventListener('scroll', () => {
-    // Select both the text and the PFP container
-    const homeContent = document.querySelector('.home-content');
-    const pfpContainer = document.querySelector('.pfp-container');
-    
-    // Calculate the scroll position
-    let scrollPos = window.scrollY;
-    let windowHeight = window.innerHeight;
+        /*
+            This script listens for scroll events and adjusts the opacity of the home content and profile picture based on how far down the user has scrolled. The content will fade out as the user scrolls down, creating a smooth transition effect.
+        */
+        window.addEventListener('scroll', () => {
+            // Select both the text and the PFP container
+            const homeContent = document.querySelector('.home-content');
+            const pfpContainer = document.querySelector('.pfp-container');
+            
+            // Calculate the scroll position
+            let scrollPos = window.scrollY;
+            let windowHeight = window.innerHeight;
 
-    // Calculate opacity (1 at top, 0 when scrolled one full screen)
-    // Adjust the '1.2' to make it fade faster or slower
-    let opacityValue = 1 - (scrollPos / (windowHeight / 1.8));
+            // Calculate opacity (1 at top, 0 when scrolled one full screen)
+            // Adjust the '1.2' to make it fade faster or slower
+            let opacityValue = 1 - (scrollPos / (windowHeight / 1.8));
 
-    // Apply the opacity, ensuring it doesn't go below 0
-    if (opacityValue >= 0) {
-        homeContent.style.opacity = opacityValue;
-        pfpContainer.style.opacity = opacityValue;
-        
-        // Optional: slight scale down as it fades for a "sinking" effect
-        homeContent.style.transform = `scale(${0.95 + (opacityValue * 0.05)})`;
-    } else {
-        homeContent.style.opacity = 0;
-        pfpContainer.style.opacity = 0;
-    }
-});
+            // Apply the opacity, ensuring it doesn't go below 0
+            if (opacityValue >= 0) {
+                homeContent.style.opacity = opacityValue;
+                pfpContainer.style.opacity = opacityValue;
+                
+                // Optional: slight scale down as it fades for a "sinking" effect
+                homeContent.style.transform = `scale(${0.95 + (opacityValue * 0.05)})`;
+            } else {
+                homeContent.style.opacity = 0;
+                pfpContainer.style.opacity = 0;
+            }
+        });
 
-/* Anims */
+        /* Anims - Updated to watch ALL sections */
+        const observerOptions = {
+            threshold: 0.15 // Trigger slightly earlier for a smoother feel
+        };
 
-/* Anims - Updated to watch ALL sections */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                } else {
+                    entry.target.classList.remove('appear'); 
+                }
+            });
+        }, observerOptions);
 
-const observerOptions = {
-    threshold: 0.15 // Trigger slightly earlier for a smoother feel
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('appear');
-        } else {
-            entry.target.classList.remove('appear'); 
-        }
-    });
-}, observerOptions);
-
-// This tells the observer to watch every <section> tag on your page
-// (Home, About, Resume, and Contact)
-document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
-});
-</script>
+        // This tells the observer to watch every <section> tag on your page
+        // (Home, Works, About, Resume, and Contact)
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
