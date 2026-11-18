@@ -1,0 +1,239 @@
+.works {
+  padding-block: var(--section-y);
+  background: var(--bg-ink);
+  border-block: 1.5px solid #000;
+}
+
+.works__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2.4rem;
+  margin-bottom: clamp(30px, 4vw, 54px);
+}
+
+.works__title {
+  margin-top: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5.6vw, 4.6rem);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--accent-magenta);
+  -webkit-text-stroke: 1.5px var(--bg-paper);
+}
+
+.works__note {
+  max-width: 36ch;
+  padding-bottom: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--paper-46);
+}
+
+/* --- Discipline band ----------------------------------------------------- */
+
+.band + .band {
+  margin-top: clamp(34px, 4.4vw, 64px);
+}
+
+.band__head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.5rem 1.6rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1.5px solid rgba(244, 241, 234, 0.28);
+}
+
+.band__title {
+  font-family: var(--font-editorial);
+  font-weight: 800;
+  font-size: clamp(0.95rem, 1.15vw, 1.08rem);
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.band__specs {
+  overflow: hidden;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: var(--paper-46);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.band__count {
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  color: var(--paper-46);
+  white-space: nowrap;
+}
+
+.band__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 24px);
+  margin-top: clamp(18px, 2.2vw, 28px);
+}
+
+/* --- Work card ----------------------------------------------------------- */
+
+.work {
+  display: flex;
+}
+
+.work__anchor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.work__anchor:focus-visible {
+  outline: 2px dashed var(--bg-paper);
+  outline-offset: 6px;
+}
+
+.work__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 2px solid var(--accent);
+  background: var(--bg-ink);
+}
+
+.work__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 520ms var(--ease);
+}
+
+.work__anchor:hover .work__media img {
+  transform: scale(1.035);
+}
+
+.work__plate {
+  display: grid;
+  place-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  height: 100%;
+  color: var(--accent-ink);
+  background-color: var(--accent);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.07) 0 10px,
+    transparent 10px 20px
+  );
+}
+
+.work__play {
+  width: 44px;
+}
+
+.work__source {
+  font-size: 0.53rem;
+  letter-spacing: 0.1em;
+  opacity: 0.75;
+}
+
+.work__body {
+  display: grid;
+  gap: 0.28rem;
+}
+
+.work__title {
+  font-family: var(--font-editorial);
+  font-weight: 800;
+  font-size: 0.92rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  transition: color var(--dur-fast) linear;
+}
+
+.work__anchor:hover .work__title {
+  color: var(--accent);
+}
+
+.work__meta {
+  font-size: 0.57rem;
+  letter-spacing: 0.06em;
+  color: var(--paper-46);
+}
+
+.work__desc {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--paper-70);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.work__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  justify-self: start;
+  margin-top: 0.15rem;
+  padding-bottom: 0.1rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  border-bottom: 1.5px solid transparent;
+  transition: border-color var(--dur-fast) linear;
+}
+
+.work__anchor:hover .work__cta {
+  border-bottom-color: currentColor;
+}
+
+.work__arrow {
+  width: 9px;
+  height: 9px;
+  transition: transform var(--dur) var(--ease);
+}
+
+.work__anchor:hover .work__arrow {
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 1120px) {
+  .band__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.4rem;
+  }
+
+  .works__note {
+    max-width: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .band__head {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .band__specs {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    white-space: normal;
+  }
+
+  .band__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .work__desc {
+    -webkit-line-clamp: 3;
+  }
+}

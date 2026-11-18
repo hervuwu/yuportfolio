@@ -1,0 +1,377 @@
+/* Ink margins frame a paper spread — the page reads as a printed sheet. */
+.hero {
+  padding: clamp(10px, 1.2vw, 18px);
+  background: var(--bg-ink);
+}
+
+.hero__spread {
+  padding-block: clamp(36px, 4.5vw, 72px) clamp(32px, 4vw, 64px);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(36px, 5vw, 80px);
+  align-items: center;
+}
+
+.hero__left {
+  position: relative;
+}
+
+.hero__title {
+  margin-top: clamp(14px, 2vw, 24px);
+}
+
+.hero__headline {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(14px, 2vw, 26px);
+}
+
+/* Archivo Black ships a single weight: never let the browser synthesise bold. */
+.hero__display {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--t-display);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.hero__line {
+  display: block;
+}
+
+.hero__line.is-last {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--ink);
+}
+
+.hero__pill {
+  flex: none;
+  margin-bottom: 0.35rem;
+  padding: 0.34rem 0.78rem;
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  color: var(--paper);
+  background: var(--ink);
+  border-radius: 999px;
+}
+
+.hero__intro {
+  margin-top: clamp(20px, 2.2vw, 28px);
+  max-width: 34ch;
+  font-size: var(--t-lead);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.hero__desc {
+  margin-top: 0.85rem;
+  max-width: 52ch;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--ink-70);
+}
+
+.hero__stickers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: clamp(22px, 2.4vw, 30px);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: clamp(22px, 2.4vw, 30px);
+}
+
+.hero__arrow {
+  width: 12px;
+  height: 12px;
+}
+
+.hero__meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem 1.4rem;
+  margin-top: clamp(26px, 3vw, 38px);
+  padding-top: 1rem;
+  border-top: var(--rule-ink);
+}
+
+.hero__meta dt {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-52);
+}
+
+.hero__meta dd {
+  margin: 0.2rem 0 0;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+/* --- Pink spiral-bound sketchbook --------------------------------------- */
+
+.hero__right {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 18px 10px 24px;
+}
+
+.hero__book {
+  position: relative;
+  width: min(100%, 400px);
+  padding: 16px 16px 14px;
+  background: #f8dbe6;
+  border: 2.5px solid #000;
+  box-shadow: var(--book-shadow);
+  rotate: 2.5deg;
+}
+
+.hero__rings {
+  position: absolute;
+  top: -11px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.hero__rings i {
+  display: block;
+  width: 8px;
+  height: 23px;
+  background: linear-gradient(180deg, #fdfbf6 0%, #dcd7c9 70%, #fdfbf6 100%);
+  border: 1.5px solid #000;
+  border-radius: 999px;
+}
+
+.hero__sheet {
+  background: var(--paper-raised);
+  border: 1.5px solid #000;
+}
+
+.hero__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.45rem;
+  background: var(--bg-paper);
+  border-bottom: 1.5px solid #000;
+}
+
+.hero__dots {
+  display: flex;
+  gap: 4px;
+}
+
+.hero__dots i {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+
+.hero__dots i:nth-child(1) {
+  background: var(--accent-vermilion);
+}
+
+.hero__dots i:nth-child(2) {
+  background: var(--accent-yellow);
+}
+
+.hero__dots i:nth-child(3) {
+  background: var(--accent-acid);
+}
+
+.hero__filename {
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-70);
+}
+
+.hero__photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.06);
+}
+
+.hero__caption {
+  padding: 0.34rem 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-52);
+  border-top: 1.5px solid #000;
+}
+
+/* Red/black checkerboard clipped into the top-right corner of the frame. */
+.hero__checker {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 62px;
+  height: 62px;
+  background: repeating-conic-gradient(#000 0 25%, var(--accent-vermilion) 0 50%) 0 0 / 14px 14px;
+  border-left: 2.5px solid #000;
+  border-bottom: 2.5px solid #000;
+}
+
+.hero__status {
+  position: absolute;
+  left: -14px;
+  bottom: -14px;
+  padding: 0.26rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--bg-paper);
+  border: var(--hair) solid #000;
+}
+
+.hero__star {
+  position: absolute;
+  top: -6px;
+  left: -8px;
+  width: 54px;
+  color: var(--accent-acid);
+  animation: hero-spin 22s linear infinite;
+}
+
+.hero__plane {
+  position: absolute;
+  right: -14px;
+  bottom: 6px;
+  width: 92px;
+  rotate: -8deg;
+}
+
+/* Figure annotation under the CTAs — the eyes live with the type, as
+   a marginal mark rather than a floating sticker. */
+.hero__marks {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: clamp(22px, 2.6vw, 32px);
+}
+
+.hero__eyes {
+  width: 84px;
+  flex: none;
+}
+
+.hero__marks-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-52);
+}
+
+@keyframes hero-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+/* --- Responsive ---------------------------------------------------------- */
+
+@media (max-width: 980px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(30px, 5vw, 46px);
+  }
+
+  .hero__book {
+    width: min(100%, 340px);
+  }
+
+  .hero__meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .hero__spread {
+    padding-block: 28px 34px;
+  }
+
+  .hero__headline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .hero__line.is-last {
+    -webkit-text-stroke-width: 1.5px;
+  }
+
+  .hero__pill {
+    margin-bottom: 0;
+  }
+
+  .hero__meta {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.6rem;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero__actions .btn {
+    justify-content: space-between;
+  }
+
+  .hero__rings i:nth-child(n + 10) {
+    display: none;
+  }
+
+  .hero__plane {
+    display: none;
+  }
+
+  .hero__marks {
+    margin-top: 20px;
+  }
+
+  .hero__eyes {
+    width: 68px;
+  }
+
+  .hero__star {
+    width: 42px;
+    top: -12px;
+  }
+
+  .hero__checker {
+    width: 48px;
+    height: 48px;
+    background-size: 12px 12px;
+  }
+}

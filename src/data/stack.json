@@ -1,0 +1,67 @@
+{
+  "eyebrow": "// CURRICULUM",
+  "heading": "THE CREATIVE STACK",
+  "summary": "Freelance multimedia work, an ongoing design degree, and the tools I actually reach for.",
+  "experience": {
+    "title": "Experience",
+    "caption": "Paid + passion work",
+    "items": [
+      {
+        "role": "Freelance Multimedia Specialist",
+        "org": "Self-employed · Cebu, PH",
+        "period": "2022 — Present",
+        "bullets": [
+          "Translating abstract ideas into 2D animations and digital art.",
+          "Producing original scores and sound design for creative projects.",
+          "Balancing aesthetic \"Directing\" with functional web code."
+        ]
+      }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "caption": "Formal training",
+    "items": [
+      {
+        "degree": "BS in Graphics and Design",
+        "school": "CTU — Main Campus",
+        "period": "2023 — Present",
+        "note": "Focusing on Filipino indigenous culture & sustainable design."
+      },
+      {
+        "degree": "Senior High School",
+        "school": "Jugan National High School",
+        "period": "2021 — 2023",
+        "note": "Survived Research & Immersion with sanity intact."
+      }
+    ],
+    "cta": { "label": "Start a conversation", "href": "#contact" }
+  },
+  "techSpecs": {
+    "title": "Tech Specs",
+    "caption": "Loaded modules",
+    "tags": [
+      "2D Animation",
+      "Sound Design",
+      "Video Editing",
+      "Web Dev",
+      "Scriptwriting"
+    ]
+  },
+  "references": {
+    "title": "The Vouch Squad",
+    "caption": "Verified testimonials",
+    "items": [
+      {
+        "name": "Imong Mama",
+        "tag": "Family dept.",
+        "quote": "Mama nako puhon | ayieeee"
+      },
+      {
+        "name": "Mr. Imissu",
+        "tag": "Field correspondent",
+        "quote": ":(( | Smart na globe 0922 ayg tuo"
+      }
+    ]
+  }
+}

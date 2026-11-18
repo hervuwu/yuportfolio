@@ -1,0 +1,61 @@
+{
+  "name": "Jhon Hervy Yu",
+  "initials": "JHY",
+  "handle": "@hervuwu",
+  "year": "2026",
+  "location": "Cebu, Philippines",
+  "email": "yujhervy@gmail.com",
+  "avatar": "src/images/yu.png",
+  "title": "Jhon Hervy Yu — Portfolio",
+  "description": "Portfolio of Jhon Hervy Yu — Graphics and Design student, multimedia specialist and creative technologist based in Cebu, Philippines.",
+  "nav": [
+    { "label": "Home", "href": "#home" },
+    { "label": "Works", "href": "#work" },
+    { "label": "About", "href": "#about" },
+    { "label": "Stack", "href": "#resume" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "hero": {
+    "eyebrow": "GRAPHICS & DESIGN STUDENT — MULTIMEDIA SPECIALIST",
+    "displayLines": ["PORT", "FOLIO"],
+    "intro": "Graphics and Design Student at Cebu Technological University.",
+    "description": "I bridge the gap between complex code and compelling narratives — treating every interface as a storyboard and every user journey as a cinematic experience.",
+    "stickers": [
+      { "label": "Design", "accent": "#E93578", "rotate": -7 },
+      { "label": "Code", "accent": "#2432E8", "rotate": 4 },
+      { "label": "Film & Sound", "accent": "#F7D020", "rotate": -3 },
+      { "label": "3D / Godot", "accent": "#94E828", "rotate": 6 }
+    ],
+    "avatarTitle": "yu.png",
+    "avatarCaption": "CTU — Main Campus / BS Graphics & Design",
+    "availability": "Open for collaboration",
+    "primaryCta": { "label": "See the works", "href": "#work" },
+    "secondaryCta": { "label": "Read the profile", "href": "#about" }
+  },
+  "marquee": ["VISUAL DESIGN", "MULTIMEDIA", "CREATIVE TECH", "JHON HERVY YU"],
+  "contact": {
+    "eyebrow": "// COLOPHON",
+    "heading": "LET'S COLLABORATE",
+    "subtitle": "Currently open to freelance multimedia projects and creative tech partnerships.",
+    "emailLabel": "Write to",
+    "surpriseLabel": "Surprise..."
+  },
+  "socials": [
+    { "label": "Facebook", "handle": "jhonhervy.yu", "url": "https://facebook.com/jhonhervy.yu" },
+    { "label": "Instagram", "handle": "@hervuwu", "url": "https://instagram.com/hervuwu" },
+    { "label": "Threads", "handle": "@hervuwu", "url": "https://threads.net/@hervuwu" },
+    { "label": "X", "handle": "@hervuwu", "url": "https://x.com/hervuwu" }
+  ],
+  "dialog": {
+    "title": "SURPRISE.SYS",
+    "message": "Note: This is a Virus... I miss you :(",
+    "detail": "No files were harmed in the making of this portfolio. Only feelings.",
+    "confirm": "Okay :(",
+    "dismiss": "Close"
+  },
+  "colophon": {
+    "copyright": "© 2026 Jhon Hervy Yu. All rights reserved.",
+    "note": "Set in Archivo Black, Syne, Plus Jakarta Sans and JetBrains Mono.",
+    "built": "Hand-coded with Vite, React 19 and a typed JSON CMS."
+  }
+}

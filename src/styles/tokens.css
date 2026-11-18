@@ -1,0 +1,65 @@
+/* ==========================================================================
+   Print-catalog / acid-zine design tokens
+   Colour, rhythm and type are declared once here; components only compose.
+   ========================================================================== */
+
+:root {
+  /* Surfaces */
+  --bg-ink: #121212;
+  --bg-paper: #f4f1ea;
+  --paper-raised: #fbf9f3;
+
+  /* Acid accents */
+  --accent-cobalt: #2432e8;
+  --accent-magenta: #e93578;
+  --accent-acid: #94e828;
+  --accent-yellow: #f7d020;
+  --accent-vermilion: #e53828;
+
+  /* Per-component accent, set inline from JSON hex tokens */
+  --accent: var(--accent-magenta);
+  --accent-ink: var(--bg-paper);
+
+  /* Ink on paper / paper on ink */
+  --ink: #121212;
+  --paper: #f4f1ea;
+  --ink-70: rgba(18, 18, 18, 0.7);
+  --ink-52: rgba(18, 18, 18, 0.52);
+  --paper-70: rgba(244, 241, 234, 0.7);
+  --paper-46: rgba(244, 241, 234, 0.46);
+
+  /* Rules: hairlines carry the structure, not borders */
+  --hair: 1.5px;
+  --rule-ink: 1.5px solid var(--ink);
+  --rule-ink-soft: 1px solid rgba(18, 18, 18, 0.2);
+  --rule-paper: 1.5px solid rgba(244, 241, 234, 0.26);
+  --frame-2: 2px solid var(--ink);
+
+  /* Hard shadows — reserved for stickers, active buttons and the hero book */
+  --press-shadow: 4px 4px 0 #000000;
+  --book-shadow: 6px 6px 0 #000000;
+
+  /* Type */
+  --font-display: 'Archivo Black', 'Arial Black', 'Helvetica Neue', sans-serif;
+  --font-editorial: 'Syne', 'Archivo Black', sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Courier New', monospace;
+
+  --t-display: clamp(3.5rem, 8vw, 6.5rem);
+  --t-h1: clamp(2.4rem, 5.4vw, 4.4rem);
+  --t-h2: clamp(1.85rem, 3.2vw, 2.8rem);
+  --t-h3: clamp(1.05rem, 1.35vw, 1.28rem);
+  --t-body: clamp(0.95rem, 0.92rem + 0.15vw, 1.0625rem);
+  --t-lead: clamp(1.05rem, 0.98rem + 0.4vw, 1.3rem);
+  --t-mono: clamp(0.6875rem, 0.67rem + 0.08vw, 0.8125rem);
+
+  /* Rhythm */
+  --page: 1440px;
+  --gutter: clamp(20px, 4.4vw, 72px);
+  --section-y: clamp(64px, 8vw, 128px);
+  --dot-grid: radial-gradient(circle at center, rgba(18, 18, 18, 0.14) 1px, transparent 1.2px);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 220ms;
+  --dur-fast: 120ms;
+}

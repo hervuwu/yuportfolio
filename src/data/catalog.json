@@ -1,0 +1,147 @@
+[
+  {
+    "slug": "film",
+    "title": "Film & Post-Production",
+    "accent": "#E93578",
+    "specialties": [
+      "Short-form narrative directing",
+      "Edit, grade and foley",
+      "Experimental silent cinema"
+    ],
+    "works": [
+      {
+        "title": "Paganduy",
+        "medium": "Short film",
+        "description": "A visceral, narrative-driven experience translating the internal struggle of a college student. Structured as a flashback, the film relies on introspective narration, claustrophobic framing, and custom foley to explore the heavy cost of ambition.",
+        "mediaUrl": "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fjhonhervy.yu%2Fvideos%2F548845684966208%2F&show_text=false&width=560&t=0",
+        "liveUrl": "https://www.facebook.com/jhonhervy.yu/videos/548845684966208/"
+      },
+      {
+        "title": "The Best Jollibee of All Time",
+        "medium": "Short film / comedy",
+        "description": "A post-modernist comedy following a doomed quest for the perfect meal. Utilizes elliptical editing to imply the exhausting passage of time, transitioning into a grounded visual resolution that highlights the bond between characters.",
+        "mediaUrl": "https://drive.google.com/file/d/1weCllep2xcn8ro3hOuwirT5t4Qzt_nuQ/preview",
+        "liveUrl": "https://drive.google.com/file/d/1weCllep2xcn8ro3hOuwirT5t4Qzt_nuQ/preview"
+      },
+      {
+        "title": "Uno",
+        "medium": "Short film / experimental",
+        "description": "An exercise in 1920s silent cinema stylization. This experimental project uses vintage visual treatments and expressive physical acting to turn a frustrating game of UNO into a slapstick comedy driven entirely by visual cues.",
+        "mediaUrl": "https://www.facebook.com/plugins/video.php?height=420&href=https%3A%2F%2Fwww.facebook.com%2Fjhonhervy.yu%2Fvideos%2F694109600108625%2F&show_text=false&width=560&t=0",
+        "liveUrl": "https://www.facebook.com/jhonhervy.yu/videos/694109600108625/"
+      },
+      {
+        "title": "Wayanfoam Advertising Project",
+        "medium": "Advertising project",
+        "description": "A somber narrative exploring the silent struggle of a depressed boy and the emotional weight carried by his older sister. This project uses atmospheric pacing to highlight the quiet realities of a family in crisis.",
+        "mediaUrl": "https://drive.google.com/file/d/1zJn710_yo5mr2n5wvzRYfhzhRvlr2VID/preview",
+        "liveUrl": "https://drive.google.com/file/d/1zJn710_yo5mr2n5wvzRYfhzhRvlr2VID/preview"
+      }
+    ]
+  },
+  {
+    "slug": "graphic",
+    "title": "Graphic Design & Branding",
+    "accent": "#2432E8",
+    "specialties": [
+      "Brand kits and logo systems",
+      "Print and campaign art",
+      "Social media systems"
+    ],
+    "works": [
+      {
+        "title": "BaboyCash",
+        "medium": "Brand identity",
+        "description": "Complete brand kit for a budget and accounting app. Designed a friendly, approachable visual identity including logo marks, typography, and a color palette that emphasizes financial security and ease of use.",
+        "mediaUrl": "src/images/baboyapp.jpg"
+      },
+      {
+        "title": "Artscello",
+        "medium": "Campaign and print",
+        "description": "Crafted the visual identity and promotional campaign for ARTSCELLO, a student organization. This project focused on creating vibrant, relatable social media content and print posters to drive student recruitment and foster a creative community on campus.",
+        "mediaUrl": "src/images/artscello.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "sound",
+    "title": "Audio & Music Production",
+    "accent": "#F4F1EA",
+    "specialties": [
+      "Original score for picture",
+      "Foley and soundscape",
+      "Precision mixing"
+    ],
+    "works": [
+      {
+        "title": "Paganduy — Original Score",
+        "medium": "Original score",
+        "description": "An original score composed to mirror the protagonist's mental fatigue and internal conflict. By blending atmospheric textures with melodic cues, the production creates a heavy, immersive sonic landscape that anchors the film's emotional depth.",
+        "mediaUrl": "https://drive.google.com/file/d/17MHJttLAcv7a0KINn24RO5maGKML-veq/preview",
+        "liveUrl": "https://drive.google.com/file/d/17MHJttLAcv7a0KINn24RO5maGKML-veq/preview"
+      },
+      {
+        "title": "Paganduy — Soundscape & Foley",
+        "medium": "Sound design",
+        "description": "An immersive auditory experience developed using DaVinci Resolve. Using recorded foley and layered SFX designed to deepen the film's atmosphere, utilizing precision audio mixing to bring the protagonist's environment to life.",
+        "mediaUrl": "src/images/sounddesign.png"
+      }
+    ]
+  },
+  {
+    "slug": "illustration",
+    "title": "2D Illustration & Concept Art",
+    "accent": "#94E828",
+    "specialties": [
+      "Character design",
+      "Key art and splash",
+      "Environment studies"
+    ],
+    "works": [
+      {
+        "title": "Character Turnaround Sheet",
+        "medium": "Character design",
+        "description": "Full 360-degree character design turnaround showing proportions, expressions for animation.",
+        "mediaUrl": "src/images/SHEETS.png"
+      },
+      {
+        "title": "Key Art / Splash Illustration",
+        "medium": "Digital illustration",
+        "description": "Fully rendered digital illustration focusing on lighting, composition, and visual storytelling.",
+        "mediaUrl": "src/images/celestia.jpg"
+      },
+      {
+        "title": "Background Illustration",
+        "medium": "Environment art",
+        "description": "A stylized digital illustration designed to establish a vibrant mood and intimate setting. This piece integrates dynamic character design with a detailed desk environment to tell a visual story about creativity and personality.",
+        "mediaUrl": "src/images/antonymph.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "web",
+    "title": "UI/UX & Web",
+    "accent": "#F7D020",
+    "specialties": [
+      "Interface design",
+      "Design systems",
+      "Front-end build"
+    ],
+    "works": [
+      {
+        "title": "Pahigal",
+        "medium": "Interface design",
+        "description": "User interface design for a real-time matchmaking chat room. Focused on creating a clean, high-retention layout that facilitates seamless communication and a modern social experience.",
+        "mediaUrl": "src/images/PAHIGAL.jpg",
+        "liveUrl": "https://pahigal.vercel.app/"
+      },
+      {
+        "title": "PUTMC",
+        "medium": "3D web experience",
+        "description": "Designing a 3D interactive website for a physical thesis product like a Portable, Solar-Powered Mosquito UV Light Trap is an excellent way to merge hardware design with digital storytelling. An interactive WebGL experience allows users to inspect the mechanics and understand the research methodology in a highly engaging format.",
+        "mediaUrl": "src/images/putmc.png",
+        "liveUrl": "https://putmc.vercel.app/"
+      }
+    ]
+  }
+]

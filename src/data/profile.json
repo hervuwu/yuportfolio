@@ -1,0 +1,49 @@
+{
+  "eyebrow": "// PROFILE",
+  "heading": "ABOUT",
+  "manifesto": [
+    "Based in Cebu, Philippines, I bridge the gap between complex code and compelling narratives. As a Graphics and Design student, I approach web development with a filmmaker's lens — treating every interface as a storyboard and every user journey as a cinematic experience.",
+    "My background in directing and scriptwriting allows me to bring a unique sense of pacing and visual flow to responsive web projects. Whether I'm coding with Three.js or designing for sustainable, indigenous-inspired brands, my goal is to create digital spaces that are as functional as they are resonant."
+  ],
+  "note": "BS Graphics and Design — CTU Main Campus",
+  "exploring": {
+    "label": "Currently exploring",
+    "items": [
+      "Non-linear RPG mechanics in Godot",
+      "Kotlin — Android app development",
+      "Three.js",
+      "Blender"
+    ]
+  },
+  "capabilities": [
+    {
+      "id": "design",
+      "title": "Design",
+      "accent": "#94E828",
+      "summary": "Visual systems that survive contact with production.",
+      "items": ["Photoshop", "Video editing", "Storyboarding", "Branding"]
+    },
+    {
+      "id": "code",
+      "title": "Code",
+      "accent": "#2432E8",
+      "summary": "Front-ends built to be read, refactored and handed over.",
+      "items": ["Python", "JavaScript", "HTML", "CSS", "React"]
+    },
+    {
+      "id": "interests",
+      "title": "Interests",
+      "accent": "#E93578",
+      "summary": "The inputs that keep the output from going stale.",
+      "items": [
+        "Film making",
+        "Music production",
+        "Digital art",
+        "Game development",
+        "Animation",
+        "MTB"
+      ]
+    }
+  ],
+  "cta": { "label": "Read the stack", "href": "#resume" }
+}

@@ -1,0 +1,100 @@
+.tk {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  overflow: hidden;
+  border-block: 1.5px solid #000;
+  user-select: none;
+}
+
+.tk--ink {
+  background: var(--bg-ink);
+  color: var(--bg-paper);
+}
+
+.tk--paper {
+  background: var(--bg-paper);
+  color: var(--bg-ink);
+}
+
+.tk__track {
+  display: flex;
+  width: max-content;
+  animation: tk-scroll var(--tk-speed, 34s) linear infinite;
+}
+
+.tk__track.is-reverse {
+  animation-direction: reverse;
+}
+
+.tk:hover .tk__track {
+  animation-play-state: paused;
+}
+
+.tk__group {
+  display: flex;
+  align-items: center;
+}
+
+.tk__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding-inline: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Alternating accents keep the strip reading as a print index, not a banner. */
+.tk--ink .tk__item:nth-child(4n + 1) {
+  color: var(--bg-paper);
+}
+
+.tk--ink .tk__item:nth-child(4n + 2) {
+  color: var(--accent-acid);
+}
+
+.tk--ink .tk__item:nth-child(4n + 3) {
+  color: var(--accent-magenta);
+}
+
+.tk--ink .tk__item:nth-child(4n + 4) {
+  color: var(--accent-yellow);
+}
+
+.tk--paper .tk__item:nth-child(4n + 1) {
+  color: var(--bg-ink);
+}
+
+.tk--paper .tk__item:nth-child(4n + 2) {
+  color: var(--accent-cobalt);
+}
+
+.tk--paper .tk__item:nth-child(4n + 3) {
+  color: var(--accent-magenta);
+}
+
+.tk--paper .tk__item:nth-child(4n + 4) {
+  color: var(--accent-vermilion);
+}
+
+.tk__sep {
+  color: currentColor;
+  opacity: 0.4;
+  font-weight: 400;
+}
+
+@keyframes tk-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
